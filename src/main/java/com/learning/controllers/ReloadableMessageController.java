@@ -1,6 +1,7 @@
 package com.learning.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,9 +18,18 @@ public class ReloadableMessageController {
     @Autowired
     ReloadableResourceBundleMessageSource resourceBundleMessageSource;
 
+    @Autowired
+    ApplicationContext context;  //automatically autowired without any additional config
+
     @GetMapping("/reloadableMessages")
     public String reloadableMessages(Locale locale) {
         return resourceBundleMessageSource.getMessage("getNameWithArgs", new String[]{"Arg1", "Arg2"}, locale);
+    }
+
+    @GetMapping("/getBeans")
+    public String[] getBeans(Locale locale) {
+        String [] beans = context.getBeanDefinitionNames();
+        return beans;
     }
 }
 
