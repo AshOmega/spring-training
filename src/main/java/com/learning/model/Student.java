@@ -1,15 +1,19 @@
 package com.learning.model;
 
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Component
-@ComponentScan("com.learning.model")
 public class Student {
 
-    int id;
+    @NotNull
+    Integer id;
+    @NotBlank
+    @NotNull
     String name;
-    double totalMarks;
+    @NotNull
+    Double totalMarks;
 
     public Student() {
     }
