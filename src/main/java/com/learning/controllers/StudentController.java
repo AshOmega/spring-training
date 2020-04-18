@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 @RestController
 @RequestMapping("/student")
@@ -20,8 +18,7 @@ public class StudentController {
 
     @GetMapping("/getName")
     public String getName(){
-        ExecutorService ex = Executors.newFixedThreadPool(10);
-        Student student = new Student(1, "Student1", 80.0);
+        Student student = new Student(1L, "Student1");
         return student.getName();
     }
 
